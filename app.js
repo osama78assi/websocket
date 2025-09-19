@@ -25,10 +25,7 @@ app.use(express.static(join(__dirname, "/dist")));
 app.use(routes);
 
 app.use("/{*all}", function (req, res, next) {
-    return res.status(404).json({
-        success: false,
-        message: "The resource you are trying to access isn't found",
-    });
+   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 export default app;
